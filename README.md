@@ -1,36 +1,37 @@
 # Suba
 
-Suba is an open-source reference implementation for stablecoin-powered mobility payments on Stellar.
+Suba is a ride-booking platform that allows riders to pay for trips using either local currency or USDC, while allowing drivers to receive earnings in either local currency or USDC based on their preferred payout option.
 
-The project demonstrates how USDC can be integrated into real-world transportation and gig-economy services, enabling instant settlement, flexible driver payouts, and seamless payment experiences without requiring users to understand blockchain technology.
+The platform combines a familiar transportation experience with payment infrastructure powered by Stellar, making transportation payments more flexible, accessible, and efficient.
 
-Rather than positioning itself as another transportation application, Suba serves as a practical blueprint for building consumer-facing applications powered by stablecoin settlement infrastructure.
+Suba is designed for everyone.
 
-By combining mobility services with Stellar-powered payments, Suba showcases how blockchain technology can support everyday economic activity while remaining invisible to end users.
+Users who prefer traditional payments can use local currency without interacting with blockchain technology.
 
-The project is designed as a real-world MVP focused on financial inclusion, stablecoin adoption, gig-economy empowerment, and practical blockchain utility.
+Users who already use digital assets can pay directly with USDC on Stellar.
+
+By supporting both traditional payments and stablecoin payments, Suba creates a practical bridge between everyday transportation services and blockchain-powered financial infrastructure.
 
 ---
 
 # Contents
 
 - [Problem](#problem)
-- [Vision](#vision)
-- [Why Suba Matters](#why-suba-matters)
 - [Solution](#solution)
-- [Ecosystem Impact](#ecosystem-impact)
+- [How Suba Works](#how-suba-works)
+- [Payment Models](#payment-models)
 - [Key Features](#key-features)
 - [Ride & Payment Flows](#ride--payment-flows)
 - [Architecture Overview](#architecture-overview)
+- [Ecosystem Impact](#ecosystem-impact)
 - [Tech Stack](#tech-stack)
 - [Why Stellar](#why-stellar)
 - [Security & Compliance](#security--compliance)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
+- [Open Source](#open-source)
 - [Project Status](#project-status)
 - [Future Improvements](#future-improvements)
-- [Use Cases](#use-cases)
-- [Impact](#impact)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -38,157 +39,112 @@ The project is designed as a real-world MVP focused on financial inclusion, stab
 
 # Problem
 
-Transportation is one of the most frequent financial activities performed globally.
+Transportation services process millions of payments every day.
 
-Millions of riders pay for transportation every day, while millions of drivers depend on transportation platforms as a primary source of income.
+While ride-booking platforms have transformed how people move around cities, payment and payout systems still present challenges for both riders and drivers.
 
-Despite the growth of digital transportation services, the financial infrastructure supporting these platforms remains largely dependent on traditional payment rails.
-
-Drivers frequently face:
+## Driver Challenges
 
 - Delayed access to earnings
+- High transfer and withdrawal fees
+- Limited payout options
 - Dependence on traditional banking systems
-- Limited payout flexibility
-- High withdrawal and transfer costs
-- Exposure to local currency instability
-- Barriers to participating in the global digital economy
+- Difficulty receiving payments across regions
 
-Riders often encounter:
+## Rider Challenges
 
 - Limited payment flexibility
-- Friction when making digital payments
-- Challenges paying across borders while traveling
-- Limited access to alternative payment methods
+- Friction when traveling
+- Dependence on local payment methods
+- Difficulty using digital assets for everyday services
 
-At the same time, stablecoins have emerged as one of the most practical applications of blockchain technology.
+## Stablecoin Adoption Challenges
 
-However, most stablecoin usage today remains concentrated in:
+Stablecoins have become one of the most practical applications of blockchain technology.
 
-- Trading
-- Remittances
-- Financial speculation
-- Asset transfers
+However, most stablecoin activity remains concentrated in trading, remittances, and asset transfers.
 
-There are still relatively few examples of stablecoins being integrated into everyday consumer applications that people use regularly.
+There are very few consumer applications that demonstrate how stablecoins can be used in everyday services.
 
-This creates an opportunity to demonstrate how stablecoin-powered infrastructure can support real-world economic activity through transportation services.
-
----
-
-# Vision
-
-Suba aims to become a reference implementation for stablecoin-powered mobility and gig-economy payments on Stellar.
-
-Our vision is to demonstrate how blockchain infrastructure can improve transportation payments without changing user behavior or requiring blockchain expertise.
-
-By abstracting away technical complexity and focusing on practical utility, Suba showcases how stablecoins can power everyday transactions at scale.
-
-Long-term, Suba aims to contribute to:
-
-- Faster settlement infrastructure
-- Financial inclusion
-- Stablecoin adoption
-- Flexible earnings for gig workers
-- Cross-border payment accessibility
-- Real-world blockchain utility
-
-Beyond transportation, the architecture and payment infrastructure developed by Suba can serve as a foundation for other marketplace-based applications.
-
----
-
-# Why Suba Matters
-
-Many blockchain applications focus primarily on financial services.
-
-Suba explores a different opportunity.
-
-Transportation represents one of the most common and recurring economic activities in the world.
-
-By integrating USDC settlement into transportation workflows, Suba demonstrates how blockchain infrastructure can move beyond speculation and become part of everyday commerce.
-
-The project provides a practical example of how stablecoins can be embedded into consumer applications while maintaining a familiar user experience.
-
-This approach helps bridge the gap between blockchain infrastructure and mainstream adoption.
+Suba aims to bridge this gap.
 
 ---
 
 # Solution
 
-Suba combines transportation services with Stellar-powered settlement infrastructure.
+Suba combines ride-booking services with flexible payment and payout infrastructure.
 
-Users interact with a familiar mobility experience while Stellar operates behind the scenes to facilitate fast, efficient, and low-cost payments.
+Riders can request trips, track drivers, and pay using either local currency or USDC.
 
-The platform introduces stablecoin utility where it creates value while preserving accessibility for everyday users.
+Drivers can accept ride requests, manage trips, track earnings, and choose whether they want payouts in local currency or USDC.
 
-## Rider Experience
+The platform uses Stellar-powered settlement behind the scenes to support efficient USDC transactions while maintaining a simple user experience.
 
-Riders can:
+## Riders Can
 
-- Request transportation
+- Request rides
 - View fare estimates
-- Track drivers in real time
-- Pay using local payment methods
-- Optionally pay using USDC
-- Receive trip receipts
-- View trip history
+- Track trips in real time
+- Pay using local currency
+- Pay using USDC
 
-No blockchain knowledge is required.
+## Drivers Can
 
-Users interact with a familiar experience similar to existing transportation platforms.
-
-## Driver Experience
-
-Drivers can:
-
-- Receive transportation requests
-- Manage active trips
+- Accept ride requests
+- Manage trips
 - Track earnings
-- View payout history
-- Configure payout preferences
-- Manage wallets and payout accounts
-
-Drivers may choose to receive earnings through:
-
-- Local currency payouts
-- USDC on Stellar
-
-This provides greater flexibility while maintaining compatibility with existing financial systems.
-
-## Stellar Settlement Layer
-
-Suba uses USDC on Stellar to support:
-
-- Near-instant settlement
-- Low-cost transactions
-- Stable-value payouts
-- Future cross-border payment capabilities
-- Financial inclusion initiatives
-
-This creates a payment infrastructure that is efficient, scalable, and globally accessible.
+- Receive payouts in local currency
+- Receive payouts in USDC
 
 ---
 
-# Ecosystem Impact
+# How Suba Works
 
-Suba contributes to the Stellar ecosystem by demonstrating:
+## Step 1: Request a Ride
 
-- Real-world USDC utility
-- Consumer-facing stablecoin adoption
-- Stablecoin-powered marketplace infrastructure
-- Mobility payment innovation
-- Practical wallet integration patterns
-- Fiat-to-stablecoin settlement workflows
-- Open-source implementation examples
+The rider enters a destination and requests transportation.
 
-As the project evolves, Suba can serve as a blueprint for similar marketplace applications including:
+## Step 2: Driver Accepts
 
-- Logistics platforms
-- Delivery services
-- Freelance marketplaces
-- Transportation networks
-- Gig-economy applications
+Nearby drivers receive the request and one accepts the trip.
 
-The project helps expand the range of real-world applications built on Stellar.
+## Step 3: Trip Begins
+
+The rider can track the driver and monitor trip progress.
+
+## Step 4: Payment Is Processed
+
+The rider pays using either local currency or USDC.
+
+## Step 5: Driver Receives Earnings
+
+The driver receives earnings based on their selected payout preference.
+
+---
+
+# Payment Models
+
+## Fiat → Fiat
+
+Rider pays using local currency.
+
+Driver receives local currency.
+
+## USDC → USDC
+
+Rider pays with USDC.
+
+Driver receives USDC.
+
+Settlement occurs on Stellar.
+
+## USDC → Fiat
+
+Rider pays with USDC.
+
+Driver receives local currency.
+
+Suba handles conversion and settlement behind the scenes.
 
 ---
 
@@ -200,96 +156,78 @@ The project helps expand the range of real-world applications built on Stellar.
 - Driver onboarding
 - Driver verification
 - Vehicle registration
-- Real-time ride matching
-- Live trip tracking
+- Ride booking
+- Driver matching
 - Fare estimation
+- Real-time trip tracking
 - Trip history
 - Ratings and reviews
 
 ## Payment Features
 
-- Fiat payment support
-- USDC payment support
-- Driver payout preferences
-- Escrow-based settlement
+- Fiat payments
+- USDC payments
+- Fiat payouts
+- USDC payouts
 - Transaction tracking
-- Digital receipts
 - Payment history
+- Digital receipts
 
 ## Driver Features
 
-- Driver profile management
 - Earnings dashboard
 - Ride management
 - Wallet management
 - Bank account management
-- Payout configuration
+- Payout preferences
 
 ## Rider Features
 
 - Ride booking
 - Fare estimation
-- Real-time tracking
+- Trip tracking
 - Payment selection
-- Digital receipts
-- Ratings system
+- Trip history
 
-## Stellar-Native Features
+## Stellar Features
 
 - USDC settlement
 - Sponsored transactions
-- Near-instant settlement
-- Low-cost payments
+- Fast settlement
+- Low transaction costs
 - Wallet integrations
-- Stablecoin-native payouts
-- Cross-border payment readiness
 
 ---
 
 # Ride & Payment Flows
 
-## Standard Transportation Flow
+## Standard Ride Flow
 
-1. Rider requests transportation
-2. Nearby drivers receive trip request
-3. Driver accepts trip
-4. Rider tracks driver arrival
-5. Trip begins
-6. Trip completes
-7. Payment settles
-8. Driver receives earnings
+1. Rider requests trip
+2. Driver accepts trip
+3. Trip begins
+4. Trip completes
+5. Payment is processed
+6. Driver receives earnings
 
 ## Fiat Payment Flow
 
-1. Rider selects local payment method
-2. Payment authorization occurs
-3. Trip completes
-4. Settlement is processed
-5. Driver receives configured payout
+1. Rider selects fiat payment
+2. Trip completes
+3. Settlement occurs
+4. Driver receives payout
 
 ## USDC Payment Flow
 
-1. Rider selects USDC payment
-2. Fare is converted to USDC
-3. Rider confirms transaction
-4. Funds enter escrow
-5. Trip completes
-6. Settlement executes on Stellar
-7. Driver receives USDC
-
-## Driver Payout Flow
-
-1. Driver selects payout preference
-2. Trip earnings are calculated
-3. Settlement executes
-4. Funds are distributed
-5. Driver receives earnings in preferred format
+1. Rider selects USDC
+2. Payment is authorized
+3. Trip completes
+4. Settlement executes on Stellar
+5. Driver receives payout
 
 ---
 
 # Architecture Overview
-
-Suba follows a modular architecture designed for scalability, maintainability, and ecosystem contributions.
 
 ```text
 Rider App
@@ -297,34 +235,45 @@ Rider App
      ▼
 API Gateway
      │
- ┌───┴─────────────┐
- │                 │
- ▼                 ▼
-Ride Service   Payment Service
- │                 │
- ▼                 ▼
-Matching      Stellar Settlement
-Engine             Layer
-                     │
-                     ▼
-                    USDC
-                     │
-         ┌───────────┴───────────┐
-         ▼                       ▼
- Driver Wallet      Fiat Settlement Partner
+ ┌───┴─────────────────┐
+ │                     │
+ ▼                     ▼
+Ride Service      Payment Service
+ │                     │
+ ▼                     ▼
+Matching Engine   Settlement Engine
+                        │
+                        ▼
+                  Stellar Network
+                        │
+         ┌──────────────┴──────────────┐
+         ▼                             ▼
+    Driver Wallet            Fiat Settlement Partner
 ```
 
 The backend manages:
 
 - Authentication
-- Driver onboarding
 - Ride matching
 - Fare calculation
-- Escrow handling
-- Wallet management
-- Settlement processing
+- Payment processing
+- Settlement
 - Notifications
-- Analytics
+- Earnings tracking
+
+---
+
+# Ecosystem Impact
+
+Suba demonstrates how Stellar can power real-world consumer applications beyond remittances and trading.
+
+The project contributes to the ecosystem by:
+
+- Increasing practical USDC usage
+- Demonstrating transportation payment workflows
+- Providing reusable payment infrastructure patterns
+- Encouraging stablecoin adoption
+- Expanding consumer-focused Stellar applications
 
 ---
 
@@ -365,19 +314,18 @@ The backend manages:
 
 # Why Stellar
 
-Suba requires payment infrastructure optimized for high-frequency, low-value transactions that occur continuously throughout the day.
+Suba requires payment infrastructure that is fast, affordable, and designed for moving value.
 
-Transportation payments require:
+Stellar provides:
 
 - Fast settlement
-- Low transaction costs
-- Reliable transaction finality
-- Stable-value assets
+- Low fees
+- Native USDC support
 - Global accessibility
+- Sponsored transactions
+- Payment-focused infrastructure
 
-Stellar provides these capabilities natively through its efficient payment network and mature USDC ecosystem.
-
-These characteristics make Stellar particularly well-suited for powering mobility and gig-economy payment infrastructure.
+These capabilities make Stellar an ideal foundation for transportation payments and payout systems.
 
 ---
 
@@ -387,19 +335,17 @@ These characteristics make Stellar particularly well-suited for powering mobilit
 
 - Secure authentication
 - Transaction validation
-- Escrow-based settlement
-- Fraud detection systems
-- Secure wallet integrations
+- Wallet security
+- Fraud monitoring
+- Audit-ready records
 - Infrastructure monitoring
-- Audit-ready transaction records
 
 ## Compliance
 
-- Driver KYC verification
-- AML-aware payment workflows
-- Secure onboarding processes
+- Driver identity verification
+- AML-aware payment flows
+- Secure onboarding
 - Privacy-focused data handling
-- Regulatory-conscious settlement design
 
 ---
 
@@ -417,7 +363,7 @@ suba/
 │   ├── auth-service/
 │   ├── ride-service/
 │   ├── payment-service/
-│   ├── wallet-service/
+│   ├── settlement-service/
 │   ├── notification-service/
 │   └── pricing-service/
 │
@@ -427,35 +373,20 @@ suba/
 │   └── stellar-integration/
 │
 ├── database/
-├── scripts/
 ├── tests/
 ├── docs/
-├── .env.example
 ├── README.md
 ├── CONTRIBUTING.md
 └── LICENSE
 ```
 
-# Getting Started
+---
 
-## Clone Repository
+# Open Source
 
-```bash
-git clone https://github.com/suba-labs/suba
-cd suba
-```
+Suba is an open-source project built to demonstrate practical transportation and payment infrastructure on Stellar.
 
-## Install Dependencies
-
-```bash
-cargo build
-```
-
-## Run Development Server
-
-```bash
-cargo run
-```
+Developers, designers, testers, and blockchain enthusiasts are welcome to contribute.
 
 ---
 
@@ -463,82 +394,33 @@ cargo run
 
 Suba is currently in MVP development.
 
-Initial development focuses on:
+Initial features include:
 
+- Ride booking
 - Driver onboarding
-- Rider onboarding
-- Ride matching
-- Real-time trip tracking
-- Fiat payment integration
-- USDC settlement infrastructure
-- Driver payout flexibility
-- Escrow-based settlement
-- Stellar integration
+- Fiat payments
+- USDC payments
+- Fiat payouts
+- USDC payouts
+- Stellar settlement
 
 ---
 
 # Future Improvements
 
-- Fleet management tools
-- Driver savings products
-- Driver lending infrastructure
-- Subscription transportation plans
-- Corporate transportation accounts
+- Delivery services
+- Fleet management
+- Corporate accounts
 - Loyalty programs
-- Airport and tourism integrations
 - Cross-border transportation payments
-- Public transportation integrations
-- Open APIs for mobility providers
-
----
-
-# Use Cases
-
-- Urban transportation
-- Gig-economy payments
-- Stablecoin-powered payouts
-- Driver earnings management
-- Marketplace settlement infrastructure
-- Financial inclusion initiatives
-- Cross-border transportation payments
-- Consumer-facing stablecoin adoption
-
----
-
-# Impact
-
-Suba demonstrates how stablecoins can power everyday services beyond remittances and trading.
-
-By integrating Stellar-powered settlement into transportation workflows, the project creates a practical example of blockchain infrastructure supporting real economic activity.
-
-The project contributes to:
-
-- Financial inclusion
-- Stablecoin adoption
-- Faster settlement systems
-- Gig-worker empowerment
-- Open-source innovation
-- Growth of the Stellar ecosystem
-- Real-world blockchain utility
+- Public APIs
+- SDKs
 
 ---
 
 # Contributing
 
-We welcome contributions from developers, designers, blockchain enthusiasts, mobility innovators, and community members.
-
-Areas where contributors can help include:
-
-- Mobile development
-- Backend engineering
-- Stellar integrations
-- Infrastructure
-- Documentation
-- UI/UX design
-- Testing
-- Community growth
-
-Please review `CONTRIBUTING.md` before submitting a pull request.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a pull request.
 
 ---
 
