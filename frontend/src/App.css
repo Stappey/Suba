@@ -1,19 +1,25 @@
-/* App-specific styles for Suba Landing Page */
+/* Clean layout styles for Suba Landing Page */
 
-.landing-page {
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Specific button overrides if needed */
-.btn-primary:active {
-  transform: scale(0.98);
+/* Fix for potential overflow on small screens */
+.landing-page {
+  overflow-x: hidden;
+  width: 100%;
 }
 
-.btn-secondary:active {
-  transform: scale(0.98);
+.highlight-box p {
+  color: #999;
 }
 
-.card:hover h3 {
+.feature-card:hover h3 {
   color: var(--accent-green);
+  transition: color 0.3s ease;
 }

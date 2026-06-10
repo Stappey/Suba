@@ -1,146 +1,134 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
+// Custom Teal Icons
+const IconWallet = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '30px' }}>
+    <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4" />
+    <path d="M4 6v12c0 1.1.9 2 2 2h14v-4" />
+    <path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z" />
+  </svg>
+);
+
+const IconRide = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '30px' }}>
+    <circle cx="18.5" cy="17.5" r="3.5" />
+    <circle cx="5.5" cy="17.5" r="3.5" />
+    <path d="M7 12l5-3" />
+    <path d="M9.5 9l5 9" />
+  </svg>
+);
+
+const IconSecurity = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '30px' }}>
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+  </svg>
+);
+
+const IconFlash = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '30px' }}>
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+  </svg>
+);
+
 function App() {
   const [activeTab, setActiveTab] = useState<'rider' | 'driver'>('rider');
 
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1
-    };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('active');
       });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
     return () => observer.disconnect();
   }, []);
 
   return (
     <div className="landing-page">
-      {/* Navigation */}
-      <nav>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
-          <div style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-1.5px', color: '#000' }}>
-            SUBA<span style={{ color: 'var(--accent-green)' }}>.</span>
-          </div>
-          <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
-            <a href="#features" style={{ color: '#000', textDecoration: 'none', fontSize: '0.95rem', fontWeight: 600 }}>Features</a>
-            <a href="#how-it-works" style={{ color: '#000', textDecoration: 'none', fontSize: '0.95rem', fontWeight: 600 }}>How it Works</a>
-            <a href="#download" className="btn btn-secondary" style={{ padding: '0.7rem 1.5rem', fontSize: '0.9rem', borderRadius: '4px' }}>Install App</a>
+      <div className="bg-blob" style={{ top: '-10%', left: '-10%' }}></div>
+      <div className="bg-blob" style={{ bottom: '20%', right: '-10%', opacity: 0.5 }}></div>
+
+      <nav className="nav-fixed">
+        <div className="container nav-content">
+          <div className="logo-text">SUBA<span className="accent-dot">.</span></div>
+          <div className="nav-links">
+            <a href="#features">What we do</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="#download" className="btn-nav">Get Suba</a>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <header className="container section-padding" style={{ textAlign: 'left', minHeight: '80vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        <div className="reveal">
-          <h1 style={{ fontSize: 'clamp(3rem, 10vw, 5.5rem)', marginBottom: '2rem', maxWidth: '900px' }}>
-            The smartest way to <br />
-            <span style={{ borderBottom: '8px solid var(--accent-green)' }}>get around.</span>
+      <header className="hero-section container">
+        <div className="reveal hero-content">
+          <div className="badge">
+            <span className="floating">👋</span> Meet the new way to move
+          </div>
+          <h1 className="hero-title">
+            The ride app that <br />
+            <span className="text-gradient">pays you back.</span>
           </h1>
-          <p style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', color: 'var(--text-secondary)', maxWidth: '600px', marginBottom: '3rem', fontWeight: 500 }}>
-            Suba combines high-speed mobility with instant USDC settlements. Fast, secure, and built for the future of work.
+          <p className="hero-subtitle">
+            Suba is a simple ride-booking app. The big difference? You can pay with normal money or digital dollars (USDC), and drivers get paid the exact second the trip ends.
           </p>
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            <a href="#download" className="btn btn-primary">Start Riding</a>
-            <a href="#features" className="btn btn-outline">Earn with Suba</a>
+          <div className="hero-btns">
+            <a href="#download" className="btn btn-primary">Download App</a>
+            <a href="#features" className="btn btn-outline">See Features</a>
           </div>
         </div>
       </header>
 
-      {/* Trust Section */}
-      <section className="section-gray section-padding">
-        <div className="container reveal">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '3rem' }}>
-            <div>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Instant Settlements</h3>
-              <p style={{ color: 'var(--text-secondary)' }}>Drivers get paid in USDC seconds after a trip is completed. No more weekly waits.</p>
-            </div>
-            <div>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Zero Friction</h3>
-              <p style={{ color: 'var(--text-secondary)' }}>Pay with local currency or USDC. We handle the blockchain complexity behind the scenes.</p>
-            </div>
-            <div>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Open Infrastructure</h3>
-              <p style={{ color: 'var(--text-secondary)' }}>Built on Stellar, the most efficient network for real-world asset movement.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Toggle Section */}
-      <section id="features" className="section-white section-padding">
+      <section id="features" className="section-padding">
         <div className="container">
-          <div className="reveal" style={{ marginBottom: '5rem' }}>
-            <h2 style={{ fontSize: '3rem', marginBottom: '2rem' }}>Experience Suba</h2>
-            <div style={{ display: 'flex', gap: '1px', background: '#eee', padding: '4px', borderRadius: '8px', width: 'fit-content' }}>
-              <button 
-                onClick={() => setActiveTab('rider')}
-                style={{ 
-                  padding: '1rem 2rem', 
-                  border: 'none', 
-                  background: activeTab === 'rider' ? '#fff' : 'transparent',
-                  fontWeight: 700,
-                  borderRadius: '6px',
-                  cursor: 'pointer',
-                  transition: '0.2s'
-                }}
-              >
-                Rider
-              </button>
-              <button 
-                onClick={() => setActiveTab('driver')}
-                style={{ 
-                  padding: '1rem 2rem', 
-                  border: 'none', 
-                  background: activeTab === 'driver' ? '#fff' : 'transparent',
-                  fontWeight: 700,
-                  borderRadius: '6px',
-                  cursor: 'pointer',
-                  transition: '0.2s'
-                }}
-              >
-                Driver
-              </button>
+          <div className="reveal section-header">
+            <h2 className="section-title">Built for <span className="text-gradient">Real Life.</span></h2>
+            <p className="section-subtitle">We made transportation simple, fair, and fast for everyone.</p>
+          </div>
+          
+          <div className="reveal toggle-wrapper">
+            <div className="toggle-box">
+              <button onClick={() => setActiveTab('rider')} className={activeTab === 'rider' ? 'active' : ''}>For Riders</button>
+              <button onClick={() => setActiveTab('driver')} className={activeTab === 'driver' ? 'active' : ''}>For Drivers</button>
             </div>
           </div>
 
-          <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+          <div className="reveal features-grid">
             {activeTab === 'rider' ? (
               <>
-                <div className="card">
-                  <h3 style={{ marginBottom: '1rem' }}>Tap and Go</h3>
-                  <p style={{ color: 'var(--text-secondary)' }}>Request a ride in seconds. Our smart matching engine connects you with the nearest driver instantly.</p>
+                <div className="feature-card">
+                  <div className="feature-icon-box"><IconWallet /></div>
+                  <h3>Pay Your Way</h3>
+                  <p>Use what you have. Pay for rides with your local money or digital USDC. It's as simple as one tap.</p>
                 </div>
-                <div className="card">
-                  <h3 style={{ marginBottom: '1rem' }}>Predictable Pricing</h3>
-                  <p style={{ color: 'var(--text-secondary)' }}>Know exactly what you'll pay before you book. No hidden fees or unexpected surcharges.</p>
+                <div className="feature-card">
+                  <div className="feature-icon-box"><IconRide /></div>
+                  <h3>Fast Booking</h3>
+                  <p>No more waiting. Our app finds the closest driver and the best route so you get there faster.</p>
                 </div>
-                <div className="card">
-                  <h3 style={{ marginBottom: '1rem' }}>Safe & Verified</h3>
-                  <p style={{ color: 'var(--text-secondary)' }}>All drivers undergo rigorous background checks and vehicle inspections for your peace of mind.</p>
+                <div className="feature-card">
+                  <div className="feature-icon-box"><IconSecurity /></div>
+                  <h3>Safe & Secure</h3>
+                  <p>Ride with peace of mind. Every driver is verified and every trip is tracked for your safety.</p>
                 </div>
               </>
             ) : (
               <>
-                <div className="card">
-                  <h3 style={{ marginBottom: '1rem' }}>Earn on Your Terms</h3>
-                  <p style={{ color: 'var(--text-secondary)' }}>You are the boss. Work when you want, where you want, and as much as you want.</p>
+                <div className="feature-card">
+                  <div className="feature-icon-box"><IconFlash /></div>
+                  <h3>Get Paid Now</h3>
+                  <p>Don't wait for banks. Your money hits your wallet the second the passenger steps out of the car.</p>
                 </div>
-                <div className="card">
-                  <h3 style={{ marginBottom: '1rem' }}>USDC Payouts</h3>
-                  <p style={{ color: 'var(--text-secondary)' }}>Receive your earnings in a global stablecoin. Protect your income from local currency inflation.</p>
+                <div className="feature-card">
+                  <div className="feature-icon-box"><IconWallet /></div>
+                  <h3>Keep More Money</h3>
+                  <p>Choose your payout. Save your earnings in digital dollars (USDC) to protect your hard-earned money.</p>
                 </div>
-                <div className="card">
-                  <h3 style={{ marginBottom: '1rem' }}>Lower Service Fees</h3>
-                  <p style={{ color: 'var(--text-secondary)' }}>Because we use Stellar, our infrastructure costs are lower—meaning more money stays in your pocket.</p>
+                <div className="feature-card">
+                  <div className="feature-icon-box"><IconSecurity /></div>
+                  <h3>Total Control</h3>
+                  <p>Track exactly what you earn. No hidden fees, no surprises—just clear, simple earnings data.</p>
                 </div>
               </>
             )}
@@ -148,47 +136,89 @@ function App() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section id="download" className="section-gray section-padding reveal">
-        <div className="container" style={{ textAlign: 'center' }}>
-          <h2 style={{ fontSize: '3.5rem', marginBottom: '1.5rem' }}>Start your journey.</h2>
-          <p style={{ color: 'var(--text-secondary)', marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
-            Download the Suba app today and experience the future of mobility.
-          </p>
-          <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button className="btn btn-secondary" style={{ width: '220px' }}>
-              App Store
-            </button>
-            <button className="btn btn-secondary" style={{ width: '220px' }}>
-              Google Play
-            </button>
+      {/* Bold Settlement Section - Simplified */}
+      <section id="how-it-works" className="container reveal" style={{ marginBottom: '100px' }}>
+        <div className="bold-section">
+          <div className="section-header" style={{ textAlign: 'left', maxWidth: '600px' }}>
+            <h2 className="section-title">How the <br /><span className="text-gradient">Magic happens.</span></h2>
+            <p style={{ opacity: 0.7, fontSize: '1.2rem', lineHeight: '1.6' }}>
+              Usually, banks take days to move money. We use a digital network to move money in seconds. 
+              It’s like sending a text message, but with money.
+            </p>
+          </div>
+
+          <div className="dual-model-grid">
+            <div className="model-card">
+              <span className="model-accent">The Daily Path</span>
+              <h3>Normal Money</h3>
+              <p style={{ opacity: 0.7, marginTop: '1rem' }}>
+                You pay with your regular bank card. We instantly send money to the driver so they don't have to wait.
+              </p>
+            </div>
+            <div className="model-card" style={{ borderColor: 'var(--accent-teal)' }}>
+              <span className="model-accent">The Modern Path</span>
+              <h3>Digital Dollars</h3>
+              <p style={{ opacity: 0.7, marginTop: '1rem' }}>
+                Use USDC to pay. The money moves directly from you to the driver. No middlemen, no extra fees.
+              </p>
+            </div>
+          </div>
+
+          <div className="tech-stats" style={{ marginTop: '80px', display: 'flex', gap: '5rem' }}>
+            <div className="stat-item">
+              <span className="stat-num">~5 Sec</span>
+              <span className="stat-text">Money moves</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-num">&lt; $0.01</span>
+              <span className="stat-text">Network Fee</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-num">24/7</span>
+              <span className="stat-text">Always open</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="container" style={{ padding: '5rem 0', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '3rem', borderTop: '1px solid var(--border-light)' }}>
-        <div>
-          <div style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '1.5rem' }}>SUBA.</div>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Moving the world, one block at a time.</p>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '2rem' }}>© 2026 Suba Labs.</p>
-        </div>
-        <div style={{ display: 'flex', gap: '5rem' }}>
-          <div>
-            <h4 style={{ marginBottom: '1.5rem', fontSize: '1rem' }}>Product</h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-              <li>Ride</li>
-              <li>Drive</li>
-              <li>Safety</li>
-            </ul>
+      {/* CTA Section */}
+      <section id="download" className="container section-padding reveal">
+        <div className="cta-section">
+          <div className="bg-blob" style={{ top: '-50%', left: '30%', opacity: 0.3 }}></div>
+          <div className="cta-content">
+            <h2 className="section-title">Ready to start? <br /><span className="text-gradient">Download Suba.</span></h2>
+            <p className="hero-subtitle" style={{ margin: '0 auto 3rem' }}>Join the community of smarter riders and faster-paid drivers.</p>
+            <div className="hero-btns" style={{ justifyContent: 'center' }}>
+              <button className="btn btn-primary">App Store</button>
+              <button className="btn btn-outline">Google Play</button>
+            </div>
           </div>
-          <div>
-            <h4 style={{ marginBottom: '1.5rem', fontSize: '1rem' }}>Company</h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-              <li>About</li>
-              <li>Contact</li>
-              <li>Terms</li>
-            </ul>
+        </div>
+      </section>
+
+      <footer className="footer container">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <div className="logo-text">SUBA<span className="accent-dot">.</span></div>
+            <p>Better rides. Instant payments.</p>
+            <p className="copyright">© 2026 Suba Labs. All rights reserved.</p>
+          </div>
+          <div className="nav-links" style={{ justifyContent: 'space-around', width: '100%' }}>
+            <div className="link-group">
+              <h4 style={{ marginBottom: '1.5rem' }}>Use Suba</h4>
+              <p><a href="#">Rider App</a></p>
+              <p><a href="#">Driver App</a></p>
+            </div>
+            <div className="link-group">
+              <h4 style={{ marginBottom: '1.5rem' }}>About</h4>
+              <p><a href="#">The Tech</a></p>
+              <p><a href="#">USDC</a></p>
+            </div>
+            <div className="link-group">
+              <h4 style={{ marginBottom: '1.5rem' }}>Support</h4>
+              <p><a href="#">Contact</a></p>
+              <p><a href="#">Privacy</a></p>
+            </div>
           </div>
         </div>
       </footer>
