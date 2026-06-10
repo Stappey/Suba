@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --accent-green: #00ff66; /* High-visibility neon green */
+  --text-primary: #000000;
+  --text-secondary: #545454;
+  --border-light: #eeeeee;
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  
+  --transition-smooth: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.highlight {
+  color: var(--accent-green);
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-padding {
+  padding: 6rem 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 4rem 0;
+  }
+}
+
+/* Sections */
+.section-white {
+  background: var(--bg-primary);
+}
+
+.section-gray {
+  background: var(--bg-secondary);
+}
+
+/* Cards */
+.card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  transition: var(--transition-smooth);
+}
+
+.card:hover {
+  border-color: var(--accent-green);
+  transform: translateY(-4px);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  border-radius: 8px; /* Slightly rounded like Uber/Bolt */
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: var(--accent-green);
+  color: #000;
+}
+
+.btn-primary:hover {
+  background: #00e65c;
+  transform: scale(1.02);
+}
+
+.btn-secondary {
+  background: #000;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background: #222;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #000;
+  color: #000;
+}
+
+/* Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Nav */
+nav {
+  height: 80px;
+  border-bottom: 1px solid var(--border-light);
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
